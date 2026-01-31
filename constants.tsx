@@ -7,7 +7,7 @@ export const ALL_PRODUCTS: Product[] = [
     name: "Dish Rack - BM 216",
     price: 1800,
     originalPrice: 2500,
-    images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop"],
     description: ["Premium dish rack for modern kitchens."],
     features: ["Steel construction", "Easy drainage"],
     category: "Kitchen Accessories",
@@ -52,19 +52,19 @@ export const ALL_PRODUCTS: Product[] = [
   {
     id: "BM161",
     sku: "BM-161",
-    name: "Wall hangging helmet rack - BM161",
-    price: 950,
-    originalPrice: 1150,
+    name: "Premium Leather Handbag - BM161",
+    price: 1250,
+    originalPrice: 1850,
     images: [
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?q=80&w=1000&auto=format&fit=crop"
     ],
-    description: ["Stylish helmet rack."],
-    features: ["Wall mounted", "Steel"],
-    category: "Home Decor",
+    description: ["Stylish and durable premium leather bag."],
+    features: ["Pure Leather", "High-quality zippers", "Spacious compartments"],
+    category: "Bags",
     stock: true
   },
   {
@@ -81,7 +81,7 @@ export const ALL_PRODUCTS: Product[] = [
   }
 ];
 
-export const PRODUCT_DATA = ALL_PRODUCTS[4]; // Default to helmet rack
+export const PRODUCT_DATA = ALL_PRODUCTS[4]; // Featured Bag
 
 export const PHONE_NUMBER = "01718-952852";
 export const EMAIL = "Nobih83@gmail.com";

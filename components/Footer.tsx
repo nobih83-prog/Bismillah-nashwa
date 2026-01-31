@@ -11,6 +11,7 @@ interface FooterProps {
   onContactClick: () => void;
   onRefundClick: () => void;
   onSitemapClick: () => void;
+  onAccountClick: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ 
@@ -21,7 +22,8 @@ const Footer: React.FC<FooterProps> = ({
   onTermsClick, 
   onContactClick, 
   onRefundClick, 
-  onSitemapClick 
+  onSitemapClick,
+  onAccountClick
 }) => {
   return (
     <footer className="bg-black text-gray-400 pt-24 pb-12 px-6 mt-32 relative overflow-hidden">
@@ -85,6 +87,7 @@ const Footer: React.FC<FooterProps> = ({
           <div className="space-y-8">
             <h4 className="text-white font-black uppercase tracking-widest text-xs border-b border-white/10 pb-4">Useful Links</h4>
             <ul className="space-y-4">
+              <li><button onClick={onAccountClick} className="font-bold text-gray-500 hover:text-white transition-all flex items-center group"><ChevronRight size={14} className="mr-2 text-red-600 group-hover:translate-x-1 transition-transform" /> My Account</button></li>
               <li><button onClick={onAboutClick} className="font-bold text-gray-500 hover:text-white transition-all flex items-center group"><ChevronRight size={14} className="mr-2 text-red-600 group-hover:translate-x-1 transition-transform" /> About Us</button></li>
               <li><button onClick={onPrivacyClick} className="font-bold text-gray-500 hover:text-white transition-all flex items-center group"><ChevronRight size={14} className="mr-2 text-red-600 group-hover:translate-x-1 transition-transform" /> Privacy Policy</button></li>
               <li><button onClick={onTermsClick} className="font-bold text-gray-500 hover:text-white transition-all flex items-center group"><ChevronRight size={14} className="mr-2 text-red-600 group-hover:translate-x-1 transition-transform" /> Terms & Conditions</button></li>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Menu, X, Package, MessageCircle, Home } from 'lucide-react';
+import { ShoppingCart, Menu, X, Package, MessageCircle, Home, Search as SearchIcon, ChevronDown, User } from 'lucide-react';
 import { PHONE_NUMBER } from '../constants';
 
 interface HeaderProps {
@@ -7,19 +7,29 @@ interface HeaderProps {
   onTrackOrderClick: () => void;
   onHomeClick: () => void;
   onCartClick: () => void;
+  onAccountClick: () => void;
   onSearch: (query: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ cartCount, onTrackOrderClick, onHomeClick, onCartClick, onSearch }) => {
+const Header: React.FC<HeaderProps> = ({ cartCount, onTrackOrderClick, onHomeClick, onCartClick, onAccountClick, onSearch }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSearch(searchInput);
+  };
 
   return (
     <>
       <header className="w-full bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between border-b">
-          <div className="flex items-center space-x-2 md:space-x-6">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <button onClick={() => setIsMenuOpen(true)} className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Menu">
               <Menu size={24} className="text-gray-900" strokeWidth={2} />
+            </button>
+            <button onClick={onAccountClick} className="p-2 hover:bg-gray-100 rounded-full transition-colors hidden md:block" aria-label="Account">
+              <User size={24} className="text-gray-900" strokeWidth={2} />
             </button>
           </div>
 
@@ -39,14 +49,39 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onTrackOrderClick, onHomeCli
             <div className="text-[8px] md:text-[10px] font-bold tracking-[0.6em] text-gray-400 uppercase mt-1">nashwa</div>
           </button>
 
-          <div className="relative cursor-pointer p-2 hover:bg-gray-100 rounded-full transition-colors" onClick={onCartClick}>
-            <ShoppingCart size={24} className="text-gray-900" strokeWidth={2} />
-            {cartCount > 0 && (
-              <span className="absolute top-1 right-1 bg-black text-white text-[9px] w-5 h-5 flex items-center justify-center rounded-full font-black border-2 border-white">
-                {cartCount}
-              </span>
-            )}
+          <div className="flex items-center space-x-1 md:space-x-3">
+             <button onClick={onAccountClick} className="p-2 hover:bg-gray-100 rounded-full transition-colors md:hidden" aria-label="Account">
+               <User size={24} className="text-gray-900" strokeWidth={2} />
+             </button>
+             <div className="relative cursor-pointer p-2 hover:bg-gray-100 rounded-full transition-colors" onClick={onCartClick}>
+               <ShoppingCart size={24} className="text-gray-900" strokeWidth={2} />
+               {cartCount > 0 && (
+                 <span className="absolute top-1 right-1 bg-black text-white text-[9px] w-5 h-5 flex items-center justify-center rounded-full font-black border-2 border-white">
+                   {cartCount}
+                 </span>
+               )}
+             </div>
           </div>
+        </div>
+
+        {/* Search Bar section right below header */}
+        <div className="bg-white px-4 py-3 md:py-4 max-w-7xl mx-auto border-b">
+          <form onSubmit={handleSearchSubmit} className="flex items-center bg-gray-100/80 rounded-xl h-12 md:h-14 px-4 space-x-3 overflow-hidden">
+             <div className="flex items-center space-x-2 border-r border-gray-300 pr-3 h-1/2 cursor-pointer">
+                <span className="text-sm font-bold text-gray-900 uppercase">All</span>
+                <ChevronDown size={14} strokeWidth={3} />
+             </div>
+             <input 
+               type="text" 
+               placeholder="Search for products..." 
+               value={searchInput}
+               onChange={(e) => setSearchInput(e.target.value)}
+               className="flex-grow bg-transparent outline-none font-medium text-gray-700 placeholder:text-gray-400"
+             />
+             <button type="submit" className="text-gray-500 hover:text-black transition-colors" aria-label="Search">
+               <SearchIcon size={20} strokeWidth={2.5} />
+             </button>
+          </form>
         </div>
       </header>
 
@@ -86,6 +121,15 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onTrackOrderClick, onHomeCli
                 >
                   <span>Home</span>
                   <Home size={16} className="text-gray-300" />
+                </button>
+              </li>
+              <li className="border-b border-gray-100">
+                <button 
+                  onClick={() => { onAccountClick(); setIsMenuOpen(false); }}
+                  className="w-full text-left py-5 text-[15px] font-bold text-gray-900 hover:text-red-600 transition-colors uppercase flex items-center justify-between"
+                >
+                  <span>My Account</span>
+                  <User size={16} className="text-gray-300" />
                 </button>
               </li>
             </ul>
